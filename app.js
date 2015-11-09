@@ -7,9 +7,20 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var searches = require('./routes/searches');
+var searches = require('./routes/searches')
+
+var mongoose = require('mongoose');
 
 var app = express();
+
+// connect mongoose
+mongoose.connect('mongodb://admin:hashatagdev@ds047514.mongolab.com:47514/hashatag', function(err) {
+  if(err) {
+    console.log('connection error', err);
+  } else {
+    console.log('connection successful');
+  }
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
